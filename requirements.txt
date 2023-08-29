@@ -1,0 +1,9 @@
+trl==0.6.0
+transformers==4.31.0
+accelerate==0.21.0
+peft==0.4.0
+datasets==2.14.4
+bitsandbytes==0.40.0
+einops==0.6.1
+wandb==0.15.3
+torch==2.0.1
