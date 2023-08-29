@@ -23,7 +23,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 #huggingface model
 # model_name = "TinyPixel/Llama-2-7B-bf16-sharded"
 #local model
-model_name = "/home/work/virtual-venv/lora-env/data/hf-llama2-chinese-model"
+model_name = "/home/work/virtual-venv/lora-env/data/hf-llama2-model"
 
 # 量化config
 bnb_config = BitsAndBytesConfig(
