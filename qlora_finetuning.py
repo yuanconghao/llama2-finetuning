@@ -41,7 +41,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 
 #huggingface model
-# model_name = "TinyPixel/Llama-2-7B-bf16-sharded"
+# model_name = "conghao/llama2-7b-chat-hf"
 #local model
 model_name = "/home/work/virtual-venv/lora-env/data/llama2-chat-hf"
 
@@ -75,8 +75,8 @@ from trl import SFTTrainer
 
 # Lora Config
 lora_alpha = 16 # LoRA低秩矩阵的缩放系数，为一个常数超参，调整alpha与调整学习率类似。
-lora_dropout = 0.1  # LoRA 层的丢弃（dropout）率，取值范围为[0, 1)
-lora_r = 64 # LoRA低秩矩阵的维数。关于秩的选择，通常，使用4，8，16即可。
+lora_dropout = 0.05  # LoRA 层的丢弃（dropout）率，取值范围为[0, 1)
+lora_r = 16 # LoRA低秩矩阵的维数。关于秩的选择，通常，使用4，8，16即可。
 task_type = 'CAUSAL_LM' # 指定任务类型。如条件生成任务（SEQ_2_SEQ_LM），因果语言建模（CAUSAL_LM）等。
 
 peft_config = LoraConfig(
@@ -125,7 +125,7 @@ trainer = SFTTrainer(
     model=model,    # 要训练的模型实例
     train_dataset=dataset,  # 用于训练的数据集
     peft_config=peft_config,    # Lora的配置，可能与模型的某种特性或训练策略有关。
-    dataset_text_field="text",  # 指定了数据集中用作输入的字段的名称，这里设置为"text"
+    dataset_text_field="input",  # 指定了数据集中用作输入的字段的名称，这里设置为"text"
     max_seq_length=max_seq_length,  # 指定了模型接受的序列的最大长度
     tokenizer=tokenizer,    # 预训练分词器，用于将文本转换为模型可以理解的格式。
     args=traning_arguments, # 训练参数，如学习率、批次大小等
