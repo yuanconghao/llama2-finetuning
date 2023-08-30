@@ -43,7 +43,12 @@ python convert_llama_weights_to_hf.py \
 
 [qlora_finetuning.py][3]
 
-fine tuning result: [Conghao/llama2-qlora-finetuning][4]
+```shell
+python qlora_finetuning.py
+#nohup python qlora_finetuning.py 2>/tmp/llama2-lora.log 1>&2 &
+```
+
+fine tuning result: [conghao/llama2-qlora-finetuning][4]
 
 
 ## llama2 inference
@@ -58,7 +63,7 @@ python inference_llama2.py
 [1]:./convert_llama_weights_to_hf.py
 [2]:https://deeplearner.top/2023/08/24/AIGC-%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BE%AE%E8%B0%83-PEFT%E6%8A%80%E6%9C%AF%E7%AE%80%E4%BB%8B/
 [3]:./qlora_finetuning.py
-[4]:https://huggingface.co/Conghao/llama2-qlora-finetuning
+[4]:https://huggingface.co/conghao/llama2-qlora-finetuning
 [5]:https://huggingface.co/conghao/llama2-7b-chat-hf/tree/main
 [6]:./create_dataset.py
 [7]:./inference_llama2.py
