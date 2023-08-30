@@ -56,7 +56,7 @@ from trl import SFTTrainer
 # Lora Config
 lora_alpha = 16 # LoRA低秩矩阵的缩放系数，为一个常数超参，调整alpha与调整学习率类似。
 lora_dropout = 0.1  # LoRA 层的丢弃（dropout）率，取值范围为[0, 1)
-lora_r = 8 # LoRA低秩矩阵的维数。关于秩的选择，通常，使用4，8，16即可。
+lora_r = 64 # LoRA低秩矩阵的维数。关于秩的选择，通常，使用4，8，16即可。
 task_type = 'CAUSAL_LM' # 指定任务类型。如条件生成任务（SEQ_2_SEQ_LM），因果语言建模（CAUSAL_LM）等。
 
 peft_config = LoraConfig(
@@ -79,6 +79,7 @@ max_grad_norm = 0.3 # 梯度裁剪的阈值，它可以防止梯度爆炸问题�
 max_steps = 1000 # 总共训练的步数。
 warmup_ratio = 0.03 # 学习率预热的比例。预热是训练开始时逐渐增加学习率的过程，它可以帮助模型更稳定地收敛。
 lr_scheduler_type = "constant"  # 学习率调度器的类型。在这里，它被设置为"constant"，这意味着学习率在整个训练过程中保持不变。
+#lr_scheduler_type = 'linear'
 
 traning_arguments = TrainingArguments(
     output_dir=output_dir,
