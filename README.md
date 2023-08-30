@@ -46,7 +46,13 @@ python convert_llama_weights_to_hf.py \
 fine tuning result: [Conghao/llama2-qlora-finetuning][4]
 
 
+## llama2 inference
 
+[inference_llama2.py][7]
+
+```shell
+python inference_llama2.py
+```
 
 
 [1]:./convert_llama_weights_to_hf.py
@@ -55,3 +61,4 @@ fine tuning result: [Conghao/llama2-qlora-finetuning][4]
 [4]:https://huggingface.co/Conghao/llama2-qlora-finetuning
 [5]:https://huggingface.co/conghao/llama2-7b-chat-hf/tree/main
 [6]:./create_dataset.py
+[7]:./inference_llama2.py
