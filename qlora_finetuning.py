@@ -89,12 +89,12 @@ peft_config = LoraConfig(
 
 # Trainer arguments
 output_dir = "./results"    # 指定保存模型和日志的目录。
-per_device_train_batch_size = 8 # 对于每个设备（例如每块GPU），在训练期间每次迭代使用的样本数量。
-gradient_accumulation_steps = 4 # 如前所述，它决定了在执行模型参数更新之前要累积的梯度步数。
+per_device_train_batch_size = 10 # 对于每个设备（例如每块GPU），在训练期间每次迭代使用的样本数量。
+gradient_accumulation_steps = 10 # 如前所述，它决定了在执行模型参数更新之前要累积的梯度步数。
 optim = "paged_adamw_32bit" # 使用的优化器名称。在这里，它看起来是一个特定的32位版本的AdamW优化器。
 save_steps = 100    # 每训练多少步后保存模型的频率。
 logging_steps = 10  # 每训练多少步后记录日志的频率。
-learning_rate = 2e-5    # 模型训练的学习率。在此代码中，学习率已经被调低（之前为2e-4，现在为2e-5），这意味着模型训练的“步长”会更小，从而可能提供更精确、更平滑的权重调整。
+learning_rate = 2e-4    # 模型训练的学习率。在此代码中，学习率已经被调低（之前为2e-4，现在为2e-5），这意味着模型训练的“步长”会更小，从而可能提供更精确、更平滑的权重调整。
 max_grad_norm = 0.3 # 梯度裁剪的阈值，它可以防止梯度爆炸问题。
 max_steps = 1000 # 总共训练的步数。
 warmup_ratio = 0.03 # 学习率预热的比例。预热是训练开始时逐渐增加学习率的过程，它可以帮助模型更稳定地收敛。
