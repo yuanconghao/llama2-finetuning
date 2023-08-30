@@ -277,10 +277,10 @@ def write_model(model_path, input_base_path, model_size, tokenizer_path=None, sa
     shutil.rmtree(tmp_model_path)
 
     # upload to huggingface
-    hf_token = "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"
-    login(hf_token)
+    #hf_token = "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"
+    #login(hf_token)
 
-    model.push_to_hub("llama2-chat-hf")
+    #model.push_to_hub("llama2-7b-chat-hf")
 
 
 def write_tokenizer(tokenizer_path, input_tokenizer_path):
