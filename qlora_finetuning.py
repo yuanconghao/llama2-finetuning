@@ -7,13 +7,33 @@ pip install
 
 """Load Dataset"""
 
-from datasets import load_dataset
+from datasets import load_dataset, Dataset
+import pandas as pd
 
 # huggingface dataset
-dataset_name = "Photolens/MedText-llama-2"
-dataset = load_dataset(dataset_name, split="train")
+#dataset_name = "Photolens/MedText-llama-2"
+#dataset = load_dataset(dataset_name, split="train")
 #print(dataset)
-print(dataset['text'][0])
+#print(dataset['text'][0])
+
+# local dataset
+def local_dataset(dataset_name):
+    if dataset_name.endswith('.json') or dataset_name.endswith('.jsonl'):
+        full_dataset = Dataset.from_json(path_or_paths=dataset_name)
+    elif dataset_name.endswith('.csv'):
+        full_dataset = Dataset.from_pandas(pd.read_csv(dataset_name))
+    elif dataset_name.endswith('.tsv'):
+        full_dataset = Dataset.from_pandas(pd.read_csv(dataset_name, delimiter='\t'))
+    else:
+        raise ValueError(f"Unsupported dataset format: {dataset_name}")
+
+    #split_dataset = full_dataset.train_test_split(test_size=0.1)
+    return full_dataset
+
+dataset_name = "./data_med/train.jsonl"
+dataset = local_dataset(dataset_name)
+print(dataset)
+
 
 """Load Model"""
 
@@ -23,7 +43,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 #huggingface model
 # model_name = "TinyPixel/Llama-2-7B-bf16-sharded"
 #local model
-model_name = "/home/work/virtual-venv/lora-env/data/hf-llama2-model"
+model_name = "/home/work/virtual-venv/lora-env/data/llama2-chat-hf"
 
 # 量化config
 bnb_config = BitsAndBytesConfig(
@@ -154,4 +174,4 @@ from huggingface_hub import login
 hf_token = "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"
 login(hf_token)
 
-model.push_to_hub("llama2-qlora-finetuning")
+model.push_to_hub("llama2-qlora-med")
