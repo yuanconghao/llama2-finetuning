@@ -1,3 +1,22 @@
+## create dataset
+
+The main fine-tuning script is written in a general format that would require you to provide a `jsonl` file for train and test datasets in addition to a json file listing the special tokens used in your dataset.
+For example each row in your dataset might be formated like the following:
+```json
+{"input": "<ASSISTANT>How can I help you?</ASSISTANT><USER>how is the weather?</USER>"}
+```
+And the special tokens can be:
+
+```json
+{"tokens": ["<ASSISTANT>", "</ASSISTANT>", "<USER>", "</USER>"]}
+```
+
+### usage
+[create_dataset.py][6]
+```shell
+python create_dataset.py
+```
+
 ## convert llama weights to transformers weights
 
 convert llama weights to transformers weights and upload to huggingface
@@ -35,3 +54,4 @@ fine tuning result: [Conghao/llama2-qlora-finetuning][4]
 [3]:./qlora_finetuning.py
 [4]:https://huggingface.co/Conghao/llama2-qlora-finetuning
 [5]:https://huggingface.co/conghao/llama2-7b-chat-hf/tree/main
+[6]:./create_dataset.py
